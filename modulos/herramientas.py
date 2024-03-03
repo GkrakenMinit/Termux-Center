@@ -1,57 +1,63 @@
+import os
 import subprocess
 from colorama import init, Fore
 
 init(autoreset=True)
 
-def herramientas():
+def instalar_herramientas():
     def mostrar_menu():
         subprocess.run("clear")
         print(Fore.GREEN + "==================================")
-        print(Fore.WHITE + "       Sistemas Operativos")
-        print(Fore.GREEN + "==================================")
-        print("1. Debian")
-        print("2. Arch Linux")
-        print("3. Ubuntu")
-        print("4. Alpine")
-        print("5. Artix Linux")
-        print("6. Salir")
+        print(Fore.WHITE + "        Instalar Herramientas")
+        print(Fore.GREEN + "==================================" + Fore.WHITE)
+        print("1. Metasploit")
+        print("2. Zphisher")
+        print("3. TBomb")
+        print("4. Salir")
 
-    def instalar_y_ejecutar(distro):
-        instalar_proot_distro(distro)
-        run_distro(distro)
+    def clonar_zphisher():
+        try:
+            subprocess.run(["git", "clone", "--depth=1", "https://github.com/htr-tech/zphisher.git", "herramientas/zphisher"])
+            print("Zphisher clonado con éxito.")
+        except Exception as e:
+            print(f"Error al clonar Zphisher: {e}")
 
-    def instalar_proot_distro(alias):
-        subprocess.run(["proot-distro", "install", alias])
+    def clonar_metasploit():
+        try:
+            subprocess.run(["bash", "-c", "source <(curl -fsSL https://kutt.it/msf)"])
+            print("Metasploit clonado con éxito.")
+        except Exception as e:
+            print(f"Error al clonar Metasploit: {e}")
 
-    def run_distro(distro):
-        filename = distro
-        with open(filename, 'w') as file:
-            file.write(f"proot-distro login {distro}")
-        subprocess.run(["chmod", "777", filename])
-        subprocess.run(["mv", filename, "../../usr/bin"])
+    def clonar_tbomb():
+        try:
+            subprocess.run(["git", "clone", "https://github.com/TheSpeedX/TBomb.git", "herramientas/TBomb"])
+            print("TBomb clonado con éxito.")
+        except Exception as e:
+            print(f"Error al clonar TBomb: {e}")
 
     def pedir_opcion():
-        opciones = {
-            1: "debian",
-            2: "archlinux",
-            3: "ubuntu-lts",
-            4: "alpine",
-            5: "artix",
-            6: None
-        }
         while True:
             try:
                 opcion = int(input("Ingresa una opcion: "))
-                if opcion in opciones:
-                    distro = opciones[opcion]
-                    if distro is None:
-                        break
-                    instalar_y_ejecutar(distro)
+                if opcion == 1:
+                    clonar_metasploit()
+                    break
+                elif opcion == 2:
+                    clonar_zphisher()
+                    break
+                elif opcion == 3:
+                    clonar_tbomb()
+                    break
+                elif opcion == 4:
                     break
                 else:
                     print("Introduce una opcion valida")
             except ValueError:
                 print("Introduce una opcion valida")
+
+    if not os.path.exists("herramientas"):
+        os.makedirs("herramientas")
 
     mostrar_menu()
     pedir_opcion()

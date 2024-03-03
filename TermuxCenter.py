@@ -1,7 +1,7 @@
 import subprocess
 from colorama import init, Fore
 from modulos.sistemasoperativos import sistemasoperativos
-from modulos.herramientas import herramientas
+from modulos.herramientas import instalar_herramientas
 
 init(autoreset=True)
 
@@ -34,7 +34,7 @@ def pedir_opcion():
                 verificar_instalacion_y_instalar()
                 break
             elif opcion == 2:
-                herramientas()
+                instalar_herramientas()                
                 break
             elif opcion == 3:
                 break

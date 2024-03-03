@@ -24,7 +24,7 @@ def sistemasoperativos():
         with open(filename, 'w') as file:
             file.write(f"proot-distro login {distro}")
         subprocess.run(["chmod", "777", filename])
-        subprocess.run(["mv", filename, "/usr/local/bin"])
+        subprocess.run(["mv", filename, "../../usr/bin"])
 
     def pedir_opcion():
         while True:

@@ -5,7 +5,7 @@ def herramientas():
     def mostrar_menu():
             subprocess.run("clear")
             print(Fore.GREEN + "==================================")
-            print(Fore.WHITE + "       Herramienntas")
+            print(Fore.WHITE + "       Herramientas")
             print(Fore.GREEN + "==================================" + Fore.WHITE)
             print("1. Debian")
             print("2. Arch Linux")

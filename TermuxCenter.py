@@ -14,12 +14,23 @@ def mostrar_menu():
 	print("3. Sobre Termux Center")
 	print("4. Salir")
 
+def verificar_instalacion_y_instalar():
+    # Verificar si proot-distro está instalado
+    resultado = subprocess.run(["dpkg", "-l", "proot-distro"], capture_output=True, text=True)
+    if "proot-distro" not in resultado.stdout:
+        # Si proot-distro no está instalado, instalarlo
+        print("proot-distro no está instalado. Instalando...")
+        subprocess.run(["apt", "install", "proot-distro", "-y"])
+        print("proot-distro instalado con éxito.")
+    else:
+        sistemasoperativos()
+
 def pedir_opcion():
 	while True:
 		try:
 			opcion = int(input("Ingresa una opcion: "))
 			if opcion == 1:
-				sistemasoperativos()
+				verificar_instalacion_y_instalar()
 				break
 			elif opcion == 2 :
 				herramientas()

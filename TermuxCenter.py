@@ -23,7 +23,7 @@ def verificar_instalacion_y_instalar():
         subprocess.run(["apt", "install", "proot-distro", "-y"])
         print("proot-distro instalado con éxito.")
     else:
-        pass
+        sistemasoperativos()
 
 def pedir_opcion():
 	while True:
@@ -31,8 +31,7 @@ def pedir_opcion():
 			opcion = int(input("Ingresa una opcion: "))
 			if opcion == 1:
 				verificar_instalacion_y_instalar()
-				sistemasoperativos()
-
+				
 				break
 			elif opcion == 2 :
 				herramientas()

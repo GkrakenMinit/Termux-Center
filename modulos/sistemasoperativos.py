@@ -2,7 +2,6 @@ from colorama import init, Fore
 import subprocess
 
 def sistemasoperativos():
-    init(autoreset=True) # Para reiniciar automáticamente los colores después de cada uso de colorama
 
     def mostrar_menu():
         subprocess.run("clear")
@@ -60,5 +59,3 @@ def sistemasoperativos():
 
     mostrar_menu()
     pedir_opcion()
-
-sistemasoperativos()

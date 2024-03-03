@@ -1,18 +1,19 @@
-from colorama import init, Fore
 import subprocess
+from colorama import init, Fore
 from modulos.sistemasoperativos import sistemasoperativos
 from modulos.herramientas import herramientas
 
+init(autoreset=True)
 
 def mostrar_menu():
-	subprocess.run("clear")
-	print(Fore.GREEN + "==================================")
-	print(Fore.WHITE + "          Termux Center")
-	print(Fore.GREEN + "==================================" + Fore.WHITE)
-	print("1. Instalar Sistemas Operativos")
-	print("2. Instalar Herramientas")
-	print("3. Sobre Termux Center")
-	print("4. Salir")
+    subprocess.run("clear")
+    print(Fore.GREEN + "==================================")
+    print(Fore.WHITE + "          Termux Center")
+    print(Fore.GREEN + "==================================")
+    print("1. Instalar Sistemas Operativos")
+    print("2. Instalar Herramientas")
+    print("3. Sobre Termux Center")
+    print("4. Salir")
 
 def verificar_instalacion_y_instalar():
     # Verificar si proot-distro está instalado
@@ -26,29 +27,23 @@ def verificar_instalacion_y_instalar():
         sistemasoperativos()
 
 def pedir_opcion():
-	while True:
-		try:
-			opcion = int(input("Ingresa una opcion: "))
-			if opcion == 1:
-				verificar_instalacion_y_instalar()
-				
-				break
-			elif opcion == 2 :
-				herramientas()
-				break
-			elif opcion == 3 :
-				break
-			elif opcion == 4:
-				break
-			
-			else:
-				print("Introduce una opcion valida")
-		except ValueError:
-			print("Introduce una opcion valida")
-		
-
-	
-
+    while True:
+        try:
+            opcion = int(input("Ingresa una opcion: "))
+            if opcion == 1:
+                verificar_instalacion_y_instalar()
+                break
+            elif opcion == 2:
+                herramientas()
+                break
+            elif opcion == 3:
+                break
+            elif opcion == 4:
+                break
+            else:
+                print("Introduce una opcion valida")
+        except ValueError:
+            print("Introduce una opcion valida")
 
 mostrar_menu()
 pedir_opcion()

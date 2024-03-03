@@ -3,7 +3,7 @@ from colorama import init, Fore
 
 init(autoreset=True)
 
-def sistemasoperativos():
+def herramientas():
     def mostrar_menu():
         subprocess.run("clear")
         print(Fore.GREEN + "==================================")

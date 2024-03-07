@@ -17,10 +17,19 @@ def instalar_herramientas():
 
     def clonar_zphisher():
         try:
-            subprocess.run(["git", "clone", "--depth=1", "https://github.com/htr-tech/zphisher.git", "herramientas/zphisher"])
-            print("Zphisher clonado con éxito.")
+        # Agregar el repositorio tur-repo
+            subprocess.run(["sudo", "apt", "install", "-y", "tur-repo"])
+
+        # Actualizar la lista de paquetes disponibles después de agregar el repositorio
+            subprocess.run(["sudo", "apt", "update"])
+
+        # Instalar Zphisher
+            subprocess.run(["sudo", "apt", "install", "-y", "zphisher"])
+        
+            print("Zphisher instalado con éxito.")
         except Exception as e:
-            print(f"Error al clonar Zphisher: {e}")
+            rint(f"Error al instalar Zphisher: {e}")
+
 
     def clonar_metasploit():
         try:
